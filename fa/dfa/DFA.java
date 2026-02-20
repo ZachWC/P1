@@ -10,18 +10,17 @@ import fa.State;
 /**
  * Deterministic finite automaton implementation.
  *
- * @author YourName
+ * @author Zach Christensen
+ * @author Cursor
  */
 public class DFA implements DFAInterface {
 
-    /** States by name, insertion-ordered for deterministic toString output. */
-    private Map<String, DFAState> states;
+    private Map<String, DFAState> states; // Ordered states
 
-    /** Alphabet symbols, insertion-ordered. */
-    private Set<Character> sigma;
+    private Set<Character> sigma; // Ordered alphabet
 
-    /** Start state (q0). */
-    private DFAState start;
+   
+    private DFAState start; //q0
 
     /**
      * Constructs an empty DFA.
@@ -115,22 +114,16 @@ public class DFA implements DFAInterface {
 
     @Override
     public DFA swap(char symb1, char symb2) {
-        DFA copy = new DFA();
+        DFA copy = new DFA(); // new DFA so you can copy over
 
-        // copy alphabet in same order
-        for (char c : sigma) copy.addSigma(c);
-
-        // copy states in same order
-        for (String name : states.keySet()) copy.addState(name);
-
-        // copy start/finals
-        for (String name : states.keySet()) {
+        for (char c : sigma) copy.addSigma(c); // copy alphabet in same order
+        for (String name : states.keySet()) copy.addState(name); // copy states in same order
+        for (String name : states.keySet()) { // copy start/finals
             if (isFinal(name)) copy.setFinal(name);
             if (isStart(name)) copy.setStart(name);
         }
-
-        // copy transitions, swapping just the two labels
-        for (String name : states.keySet()) {
+        
+        for (String name : states.keySet()) { // copy transitions, swapping just the two labels
             DFAState original = states.get(name);
 
             for (char c : sigma) {
@@ -149,7 +142,7 @@ public class DFA implements DFAInterface {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // Created by CURSOR AI
         StringBuilder sb = new StringBuilder();
 
         // Q

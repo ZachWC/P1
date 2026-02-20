@@ -22,7 +22,7 @@ public class DFAState extends State{
 
     }
 
-    //GETTERS
+    /***** GETTERS *****/
 
     public boolean getIsFinal() {
         return isFinal;
@@ -36,7 +36,7 @@ public class DFAState extends State{
         return transitions.get(symbol);
     }
 
-    //SETTERS
+    /***** SETTERS *****/
 
     public void setIsFinal(boolean isFinal) {
         this.isFinal = isFinal;
